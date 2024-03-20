@@ -64,13 +64,13 @@ return [
          * The test connection is used during the test suite.
          */
         'test' => [
-            'host' => 'localhost',
+            'host' => 'db',
             //'port' => 'non_standard_port_number',
-            'username' => 'my_app',
+            'username' => 'user',
             'password' => 'secret',
-            'database' => 'test_myapp',
+            'database' => 'test_db',
             //'schema' => 'myapp',
-            'url' => env('DATABASE_TEST_URL', 'sqlite://127.0.0.1/tmp/tests.sqlite'),
+            'url' => env('DATABASE_TEST_URL', null),
         ],
     ],
 

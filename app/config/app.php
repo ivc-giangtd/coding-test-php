@@ -185,10 +185,16 @@ return [
      */
     'Error' => [
         'errorLevel' => E_ALL,
-        'skipLog' => [],
+        'exceptionRenderer' => 'App\Error\ApiExceptionRenderer',
+        'skipLog' => [
+            'Cake\Http\Exception\MissingControllerException',
+            'Cake\Controller\Exception\MissingActionException',
+            'Cake\Routing\Exception\MissingRouteException',
+            'Cake\Http\Exception\BadRequestException',
+        ],
         'log' => true,
         'trace' => true,
-        'ignoredDeprecationPaths' => [],
+        'ignoredDeprecationPaths' => ['vendor/cakephp/authentication/src/Identifier/Resolver/OrmResolver.php'], // disable for unit test
     ],
 
     /*

@@ -24,6 +24,7 @@ services:
     platform: "linux/amd64"
     volumes:
       - ./docker/mysql/conf.d:/etc/mysql/conf.d
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
       - db-store:/var/lib/mysql
     ports:
       - 2435:3306

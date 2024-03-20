@@ -64,8 +64,6 @@ return function (RouteBuilder $routes): void {
          */
         $builder->connect('/pages/*', 'Pages::display');
 
-        $builder->resources('Articles');
-
         /*
          * Connect catchall routes for all controllers.
          *
@@ -97,4 +95,21 @@ return function (RouteBuilder $routes): void {
      * });
      * ```
      */
+
+    $routes->prefix('Api', ['path' => '/'], function ($builder) {
+        $builder->setExtensions(['json']);
+        $builder->applyMiddleware();
+        // Articles
+        $builder->post(
+            '/articles/:id/like', ['controller' => 'Articles', 'action' => 'like']
+        )->setPass(['id']);
+        $builder->resources('Articles', [
+            'controller' => 'Articles'
+        ]);
+
+        // Users
+        $builder->post(
+            '/login', ['controller' => 'Users', 'action' => 'login']
+        );
+    });
 };
