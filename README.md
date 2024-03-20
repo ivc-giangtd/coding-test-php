@@ -27,6 +27,7 @@ docker-compose up -d --build
 ```
 docker-compose exec app sh
 composer install
+chmod -R 777 tmp/
 ```
 
 ### Database Setup
@@ -72,7 +73,7 @@ ____
 
 This guideline is made for testing using Postman: https://www.postman.com
 - Assuming you installed Postman and logged in already.
-- Import the collection to Postman to get all requests using json file: ~YOUR_REPOSITORY/postman_collection/collection.json
+- Import the collection to Postman to get all requests using json file: ~REPOSITORY_NAME/postman_collection/Cake PHP.postman_collection.json
 
 ### Authentication
 
@@ -81,8 +82,14 @@ Use following API to authorize your session:
 POST: http://localhost:34251/login.json
 ```
 And using following account
+User 1:
 ```json
 email: admin@gmail.com
+password: secret
+```
+User 2:
+```json
+email: admin1@gmail.com
 password: secret
 ```
 If your email and password are correct, you will receive a generated token. Your response is similar to the following.
@@ -243,15 +250,14 @@ If param "title" is empty
 ```
 HTTP Code: 400
 ```
+
 ```json
 {
-    "success": false,
-    "message": "Validation failed",
-    "errors": {
-        "title": {
-            "_empty": "This field cannot be left empty"
-        }
-    }
+  "success": false,
+  "message": "Validation failed",
+  "errors": {
+    "title": "This field cannot be left empty"
+  }
 }
 ```
 
@@ -343,11 +349,15 @@ HTTP Code: 403
 
 To like an article, use following API:
 ```
-POST: http://localhost:34251/articles/{id}.json
+POST: http://localhost:34251/articles/{id}/like.json
 ```
 The response
 ```json
-
+{
+    "success": true,
+    "data": [],
+    "message": "Article liked successfully."
+}
 ```
 If user like more than one time
 ```

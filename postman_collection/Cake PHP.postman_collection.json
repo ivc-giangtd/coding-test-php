@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "d8f273fa-2dae-4d0a-8b50-991b7786a3ff",
+		"name": "Cake PHP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6795148"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_URL}}/login{{SUFFIX}}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"login{{SUFFIX}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Articles",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/articles{{SUFFIX}}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles{{SUFFIX}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_URL}}/articles/1{{SUFFIX}}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"1{{SUFFIX}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"title\": \"abc\",\r\n \"body\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/articles{{SUFFIX}}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles{{SUFFIX}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"title\": \"123\",\r\n \"body\": \"abc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/articles/1{{SUFFIX}}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"1{{SUFFIX}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/articles/1/like{{SUFFIX}}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"1",
+								"like{{SUFFIX}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/articles/1{{SUFFIX}}",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"1{{SUFFIX}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_URL",
+			"value": "http://localhost:34251",
+			"type": "default"
+		},
+		{
+			"key": "SUFFIX",
+			"value": ".json",
+			"type": "default"
+		},
+		{
+			"key": "TOKEN",
+			"value": "1",
+			"type": "default"
+		}
+	]
+}
